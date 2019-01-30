@@ -1,0 +1,23 @@
+extend layout.pug
+
+block content
+    table(width="100%")
+        tr
+            th 번호
+            th 그룹
+            th 이름
+            if auth == "admin"
+                th 삭제
+        each item, idx in registers      
+            tr
+                td= idx+1
+                td
+                    if item.group =="groom"
+                        = "신랑"
+                    else
+                        = "신부"
+                td= item.name
+                td= item.num
+                if auth == "admin"
+                    td 
+                        a(href="/delete?num="+item.num) X

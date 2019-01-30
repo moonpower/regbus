@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport',content='width=device-width,initial-scale=1.0')
+  body
+    table(width="100%", class="default")
+      tr
+        td
+          table(width="100%")
+            tr
+              td
+                select(id="pos", class="reg-select")
+                  option(value="bride") 신부
+                  option(value="groom") 신랑
+            tr
+              td
+                label(for="name",class="reg-label") 이름
+            tr 
+              td
+                input(id="name", placeholder="이름을 입력해주세요.",class="reg-inp")
+            tr
+              td
+                label(for="contact",class="reg-label") 전화번호
+            tr
+              td
+                input(maxlength="3",value="010",class="reg-num1")
+                ="-"
+                input(maxlength="4", class="reg-num2")
+                ="-"
+                input(maxlength="4", class="reg-num2")
+            tr
+              td(class="btn-area")
+                a(class="btn", href="#", onclick="regist();return false;") 등록              

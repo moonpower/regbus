@@ -1,0 +1,21 @@
+{
+  "name": "regbus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.12",
+    "mongoose": "^4.7.1",
+    "nodemailer": "^2.6.4",
+    "pug": "^2.0.3",
+    "pug-cli": "^1.0.0-alpha6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moon",
+  "license": "ISC"
+}
