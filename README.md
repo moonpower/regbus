@@ -1,1 +1,1 @@
-# regbus
+# Korean regbus
