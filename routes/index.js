@@ -20,7 +20,8 @@ module.exports = function(app,Register){
         common.listData(Register,{},res,function(datas){
             res.render('list', {
                 registers: datas,
-                auth:auth
+                auth:auth,
+                title:"등록자 리스트"
             });
         })
     });
