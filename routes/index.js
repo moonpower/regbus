@@ -48,6 +48,7 @@ module.exports = function(app,Register){
             reg.registerDate = common.today();
             reg.group = req.body.group;
             reg.passwd = req.body.pwd;
+            reg.auth = common.AUTH.USER;
     
             common.saveData(Register,reg,res);
         });

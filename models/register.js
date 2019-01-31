@@ -6,7 +6,7 @@ var registerSchema = new Schema({
    group:String,
     name:String,
     num:String,
-    leader:Boolean,
+    auth:String,
     date:String,
     passwd:String
     

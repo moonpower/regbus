@@ -67,7 +67,9 @@ function cancel(){
         $("#pwd").focus();
         return;
     }
-    
+    if(!confirm("등록 취소 하시겠습니까?")){
+        return;
+    }
     var params = {
         "name": name,
         "num": num,

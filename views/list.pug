@@ -8,17 +8,26 @@ block content
             th 이름
             th 전화번호
             if auth == "admin"
+                th 인솔자
                 th 삭제
-        each item, idx in registers      
-            tr
-                td= idx+1
-                td
-                    if item.group =="groom"
-                        = "신랑"
+        each item, idx in registers
+            if item.auth == "manager"
+                tr(class="manager")
+            else
+                tr
+                    td= idx+1
+                    td
+                        if item.group =="groom"
+                            = "신랑"
+                        else
+                            = "신부"
+                    td= item.name
+                    if auth != "admin"
+                        td= item.num.substring(0,item.num.length - 4)+"****"
                     else
-                        = "신부"
-                td= item.name
-                td= item.num
-                if auth == "admin"
-                    td 
-                        a(href="/delete?num="+item.num) X
+                        td= item.num
+                        td
+                            input(type="checkbox",data-num=item.num)
+                        td 
+                            a(href="delete?num="+item.num) X
+

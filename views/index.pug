@@ -1,4 +1,8 @@
 extend layout.pug
+
+block scripts
+  script(src='/javascripts/common.js')
+
 block content
   table(width="100%")
     tr
@@ -12,8 +16,8 @@ block content
       td
         select#group(class="reg-select")
           option(value="") 선택
-          option(value="bride") 신부
           option(value="groom") 신랑
+          option(value="bride") 신부
     tr
       td
         label(for="name",class="reg-label") 이름
@@ -38,3 +42,6 @@ block content
     tr
         td(class="btn-area")
           a(class="btn", href="#", onclick="cancel();return false;") 등록 취소
+    tr
+        td(class="btn-area")
+          a(class="btn", href="./list") 등록 리스트

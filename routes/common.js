@@ -1,3 +1,7 @@
+var AUTH = {USER:"user",MANAGER:"manager",ADMIN:"admin"};
+
+exports.AUTH = AUTH;
+
 exports.today = function() {
         var d = new Date();
         var result = [];
