@@ -15,7 +15,7 @@ module.exports = function(app,Register){
     app.get('/list',function(req,res){
         var auth = "user";
         if(req.query.auth){
-            auth = "admin";
+            auth = req.query.auth;
         }
         common.listData(Register,{},res,function(datas){
             res.render('list', {
@@ -49,6 +49,7 @@ module.exports = function(app,Register){
             reg.group = req.body.group;
             reg.passwd = req.body.pwd;
             reg.auth = common.AUTH.USER;
+            reg.trip = req.body.trip;
     
             common.saveData(Register,reg,res);
         });

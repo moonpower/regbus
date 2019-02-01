@@ -8,7 +8,8 @@ var registerSchema = new Schema({
     num:String,
     auth:String,
     date:String,
-    passwd:String
+    passwd:String,
+    trip:String
     
 },{collection:'register'});
 

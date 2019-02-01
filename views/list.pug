@@ -8,26 +8,39 @@ block content
             th 이름
             th 전화번호
             if auth == "admin"
+                th 탑승구간
                 th 인솔자
                 th 삭제
+            else if auth = "manager"
+                th 탑승구간
         each item, idx in registers
             if item.auth == "manager"
                 tr(class="manager")
             else
                 tr
-                    td= idx+1
-                    td
-                        if item.group =="groom"
-                            = "신랑"
-                        else
-                            = "신부"
-                    td= item.name
-                    if auth != "admin"
-                        td= item.num.substring(0,item.num.length - 4)+"****"
-                    else
-                        td= item.num
-                        td
-                            input(type="checkbox",data-num=item.num)
-                        td 
-                            a(href="delete?num="+item.num) X
+            td= idx+1
+            td
+                if item.group =="groom"
+                    = "신랑"
+                else
+                    = "신부"
+            td= item.name
+            if auth == "admin"
+                td= item.num
+                case item.trip
+                    when "roundtrip": td 왕복
+                    when "depart": td 편도(가는편)
+                    when "return": td return(오는편)
+                td
+                    input(type="checkbox",data-num=item.num)
+                td 
+                    a(href="delete?num="+item.num) X
+            else if auth == "manager"
+                td= item.num
+                case item.trip
+                    when "roundtrip": td= "왕복"
+                    when "depart": td= "편도(가는편)"
+                    when "return": td= "return(오는편)"
+            else
+                td= item.num.substring(0,item.num.length - 4)+"****"
 

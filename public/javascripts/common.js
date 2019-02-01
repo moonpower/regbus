@@ -3,6 +3,7 @@ function regist() {
     var group = $("#group").val();
     var num = $("#num").val();
     var pwd = $("#pwd").val();
+    var trip = $("#trip").val();
     
     if (isEmpty(name) == true) {
         alert("이름을 입력해주세요.");
@@ -26,7 +27,8 @@ function regist() {
         "name": name,
         "group": group,
         "num": num,
-        "pwd":pwd
+        "pwd":pwd,
+        "trip":trip
 
     };
     $.ajax({

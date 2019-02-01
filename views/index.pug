@@ -11,6 +11,15 @@ block content
         h3 (총 좌석: 44, 등록된 좌석: #{count})
     tr
       td
+        label 탑승구간
+    tr
+      td
+        select#trip(class="reg-select")
+          option(value="roundtrip" selected) 왕복
+          option(value="depart") 가는편(서울->순천)
+          option(value="return") 오는편(순천->서울)
+    tr
+      td
         label 그룹
     tr
       td
@@ -35,7 +44,7 @@ block content
         label(for="contact",class="reg-label") 비밀번호
     tr
       td
-        input#pwd(type="password", maxlength="4",class="reg-pwd")
+        input#pwd(type="password", maxlength="4",class="reg-pwd",placeholder="4자리 비밀번호")
     tr
       td(class="btn-area")
         a(class="btn", href="#", onclick="regist();return false;") 등록

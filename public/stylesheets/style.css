@@ -13,9 +13,14 @@ ul {
     padding: 3px 0px 8px 0px;
     width: 150px
 }
-.reg-inp,.reg-label,.reg-num1,.reg-pwd{
+.reg-label{
     height: 30px;
-    width: 150px
+    width: 150px;
+}
+.reg-inp,.reg-num1,.reg-pwd{
+    height: 30px;
+    width: 150px;
+    border: 1px solid rgb(169, 169, 169);
 }
 
 .btn {
