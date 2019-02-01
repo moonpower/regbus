@@ -11,7 +11,7 @@ block content
                 th 탑승구간
                 th 인솔자
                 th 삭제
-            else if auth = "manager"
+            else if auth == "manager"
                 th 탑승구간
         each item, idx in registers
             if item.auth == "manager"
@@ -29,8 +29,9 @@ block content
                 td= item.num
                 case item.trip
                     when "roundtrip": td 왕복
-                    when "depart": td 편도(가는편)
-                    when "return": td return(오는편)
+                    when "depart": td 가는편
+                    when "return": td 오는편
+                    default: td
                 td
                     input(type="checkbox",data-num=item.num)
                 td 
@@ -38,9 +39,10 @@ block content
             else if auth == "manager"
                 td= item.num
                 case item.trip
-                    when "roundtrip": td= "왕복"
-                    when "depart": td= "편도(가는편)"
-                    when "return": td= "return(오는편)"
+                    when "roundtrip": td 왕복
+                    when "depart": td 가는편
+                    when "return": td 오는편
+                    default: td
             else
                 td= item.num.substring(0,item.num.length - 4)+"****"
 
