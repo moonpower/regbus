@@ -4,18 +4,18 @@ function regist() {
     var num = $("#num").val();
     var pwd = $("#pwd").val();
     var trip = $("#trip").val();
-    
-    if (isEmpty(name) == true) {
+   
+    if (isEmpty(group) == true) {
+        alert("그룹을 선택해 주세요.");
+        $("#group").focus();
+        return;
+    }else if (isEmpty(name) == true) {
         alert("이름을 입력해주세요.");
         $("#name").focus();
         return;
-    }else if (isEmpty(num) == true) {
-        alert("전화번호를 입력해주세요.");
+    }else if (isEmpty(num) == true || num.length != 11) {
+        alert("전화번호를 11자리를 입력해주세요.");
         $("#num").focus();
-        return;
-    }else if (isEmpty(group) == true) {
-        alert("그룹을 선택해 주세요.");
-        $("#group").focus();
         return;
     }else if(isEmpty(pwd) == true ||pwd.length != 4){
         alert("비밀번호4자리를 입력해 주세요.");
