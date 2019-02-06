@@ -1,0 +1,25 @@
+extend layout.pug
+
+block scripts
+    script(src='/javascripts/login.js')
+
+block content
+    table(width="100%")
+        tr
+            td
+                h2 로그인
+        tr
+            td
+                label.reg-label 전화번호
+        tr
+            td
+                input#num.reg-num1(type="tel", placeholder="ex)01055557777",maxlength="11")
+        tr
+            td
+                label 비밀번호
+        tr
+            td
+                input#pwd.reg-pwd(type="password")
+        tr
+            td(class="btn-area")
+                a(class="btn", href="#", onclick="login();return false;") 등록

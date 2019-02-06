@@ -1,6 +1,15 @@
 extend layout.pug
 
+block scripts
+    script(src='/javascripts/list.js')
+
 block content
+    span(style="float:right")
+        if user
+            span(style="padding-right:10px;")= '인솔자 '+ user+'님'
+            a(href="#", onclick="logout();return false;") 로그아웃
+        else if auth != "admin"
+            a(href="./login") 인솔자 로그인
     table(width="100%")
         tr
             th 번호
@@ -33,7 +42,10 @@ block content
                     when "return": td 오는편
                     default: td
                 td
-                    input(type="checkbox",data-num=item.num)
+                    if item.auth == "manager"
+                        input(type="checkbox",data-num=item.num,onchange="checkManager(this)",checked)
+                    else 
+                        input(type="checkbox",data-num=item.num,onchange="checkManager(this)")
                 td 
                     a(href="delete?num="+item.num) X
             else if auth == "manager"

@@ -2,9 +2,16 @@ var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var app = express();
 connection();
+
+app.use(session({
+    secret:'@#@$MYSIGN#@$#$',
+    resave: false,
+    saveUninitialized:true
+}));
 
 var Register = require('./models/register');
 
