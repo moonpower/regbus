@@ -90,7 +90,6 @@ module.exports = function(app,Register){
                 res.send("111");
             }
         });
-        // common.updateData(Register,{num:num},{auth:auth})
     })
 
     app.get('/delete',function(req,res){
