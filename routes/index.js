@@ -36,7 +36,7 @@ module.exports = function(app,Register){
 
     //로그인 페이지
     app.get('/login',function(req,res){
-        res.render('login',{title:"로그인"});
+        res.render('login',{title:"인솔자 로그인"});
     });
 
     app.post('/login',function(req,res){
