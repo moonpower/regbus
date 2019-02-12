@@ -62,42 +62,41 @@ block content
         div#map(style="width:100%;height:400px")
   script(type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ab518903c4c4ef40e7d73fd0cdfcaf2&libraries=clusterer,services")
   script.
-    function initMap(){
-     
-      var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-      var options = { //지도를 생성할 때 필요한 기본 옵션
-          center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-          level: 3 //지도의 레벨(확대, 축소 정도)
-      };
+    
+    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+    var options = { //지도를 생성할 때 필요한 기본 옵션
+        center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+        level: 3 //지도의 레벨(확대, 축소 정도)
+    };
 
-      var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 
-      var geocoder = new daum.maps.services.Geocoder();
-      geocoder.addressSearch('서울 서초구 방배동 507-1', function(result, status) {
+    var geocoder = new daum.maps.services.Geocoder();
+    geocoder.addressSearch('서울 서초구 방배동 507-1', function(result, status) {
 
-          // 정상적으로 검색이 완료됐으면 
-          if (status === daum.maps.services.Status.OK) {
+        // 정상적으로 검색이 완료됐으면 
+        if (status === daum.maps.services.Status.OK) {
 
-              var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
-              // 결과값으로 받은 위치를 마커로 표시합니다
-              var marker = new daum.maps.Marker({
-                  map: map,
-                  position: coords
-              });
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new daum.maps.Marker({
+                map: map,
+                position: coords
+            });
 
-              // 인포윈도우로 장소에 대한 설명을 표시합니다
-              var infowindow = new daum.maps.InfoWindow({
-                  content: '<div style="width:150px;text-align:center;padding:6px 0;">사당역 공영주차장</div>'
-              });
-              infowindow.open(map, marker);
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            var infowindow = new daum.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">사당역 공영주차장</div>'
+            });
+            infowindow.open(map, marker);
 
-              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-              map.setCenter(coords);
-          } 
-      });    
-    }
-    setTimeout(initMap,1000);
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+        } 
+    });    
+
+
 
     
   
