@@ -25,11 +25,23 @@ module.exports = function(app,Register){
             auth = req.query.auth;
         }
         common.listData(Register,{},res,function(datas){
-            res.render('list', {
-                registers: datas,
-                auth:auth,
-                title:"등록자 리스트",
-                user:user
+            var ct1 = 0;
+            var ct2 = 0;
+            Register.count({checkin1:true},function(err,count){
+                ct1 =count;
+
+                Register.count({checkin2:true},function(err,count){
+                    ct2 = count;
+                    
+                    res.render('list', {
+                        registers: datas,
+                        auth:auth,
+                        title:"등록자 리스트",
+                        user:user,
+                        c1total:ct1,
+                        c2total:ct2
+                    });
+                });
             });
         })
     });
@@ -89,8 +101,24 @@ module.exports = function(app,Register){
             if(!result){
                 res.send("111");
             }
+            res.send("100");
         });
-    })
+    });
+
+    app.post("/checkin/user",function(req,res){
+        var num = req.body.num;
+        var name = req.body.name;
+        var checked = req.body.checked;
+        var key = name == "seoul"?"checkin1":"checkin2";
+        var updateObj = {};
+        updateObj[key] = checked;
+        Register.findOneAndUpdate({num:num},{$set:updateObj},function(err,result){
+            if(!result){
+                res.send("111");
+            }
+            res.send("100");
+        });
+    });
 
     app.get('/delete',function(req,res){
        common.deleteData(Register,{num:req.query.num},res,function(err,removed){

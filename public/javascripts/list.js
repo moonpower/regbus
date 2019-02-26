@@ -38,3 +38,40 @@ function checkManager(input){
         }
     })
 }
+
+function checkin(input){
+    var num=input.getAttribute("data-num");
+    var name=input.getAttribute("name");
+    var checked = input.checked;
+    $.ajax({
+        type: "post",
+        data:{num:num,checked:checked,name:name},
+        url: "./checkin/user",
+        success: function (data, status) {
+            if(data =="111"){
+                alert("설정에 실패 했습니다.");
+            }else{
+                if(name=="seoul"){
+                    updateCheckin1Total();
+                }else{
+                    updateCheckin2Total();
+                }
+            }
+        },
+        error: function (e) {
+            alert("문제가 발생했습니다. 관리자에게 문의해주세요.");
+        }
+    })
+}
+
+function updateCheckin1Total(){
+    var ele = document.querySelector(".checkin1-total");
+    var nodes = document.querySelectorAll("[name='seoul']:checked");
+    ele.innerHTML = nodes.length+"명";
+}
+
+function updateCheckin2Total(){
+    var ele = document.querySelector(".checkin2-total");
+    var nodes = document.querySelectorAll("[name='suncheon']:checked");
+    ele.innerHTML = nodes.length+"명";
+}

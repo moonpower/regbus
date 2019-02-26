@@ -9,7 +9,9 @@ var registerSchema = new Schema({
     auth:String,
     date:String,
     passwd:String,
-    trip:String
+    trip:String,
+    checkin1:Boolean,
+    checkin2:Boolean
     
 },{collection:'register'});
 

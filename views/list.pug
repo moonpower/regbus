@@ -22,6 +22,8 @@ block content
                 th 삭제
             else if auth == "manager"
                 th 탑승구간
+                th 서울
+                th 순천
         each item, idx in registers
             if item.auth == "manager"
                 tr(class="manager")
@@ -55,6 +57,23 @@ block content
                     when "depart": td 가는편
                     when "return": td 오는편
                     default: td
+                td 
+                    if item.checkin1 == true
+                        input(type="checkbox",data-num=item.num,name="seoul",onchange="checkin(this)",checked)
+                    else
+                        input(type="checkbox",data-num=item.num,name="seoul",onchange="checkin(this)")
+                td 
+                    if item.checkin2 == true
+                        input(type="checkbox",data-num=item.num,name="suncheon",onchange="checkin(this)",checked)
+                    else
+                        input(type="checkbox",data-num=item.num,name="suncheon",onchange="checkin(this)")
             else
                 td= item.num.substring(0,item.num.length - 4)+"****"
+        if auth == "manager"
+            tr
+                td(colspan="5")
+                td.checkin1-total= c1total+"명"
+                td.checkin2-total= c2total+"명"
+            
+
 
