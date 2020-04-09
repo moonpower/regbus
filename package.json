@@ -7,15 +7,24 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-session": "^1.15.6",
+    "lodash": "^4.17.15",
     "mongodb": "^2.2.12",
     "mongoose": "^4.7.1",
     "nodemailer": "^2.6.4",
     "pug": "^2.0.3",
     "pug-cli": "^1.0.0-alpha6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.4",
+    "pug-loader": "^2.4.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "build": "webpack --mode=production"
   },
   "author": "moon",
   "license": "ISC"

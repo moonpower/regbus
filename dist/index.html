@@ -1,0 +1,32 @@
+<!doctype html><html><head><title></title><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><link rel="stylesheet" href="/stylesheets/style.css"><script src="/javascripts/jquery-3.1.1.min.js"></script><script src="/javascripts/common.js"></script><script src="/javascripts/index.js"></script></head><body><table width="100%"><tr><td><table width="100%"><tr><td><h2>버스 탑승 신청</h2><h3>(총 좌석: 44, 등록된 좌석: )</h3><p style="color:red;">3월 1일 금요일 오전 7시 30분</p><p>장소: 사당역 1번 출구 공영주차장</p></td></tr><tr><td><label>탑승구간</label></td></tr><tr><td><select class="reg-select" id="trip"><option value="roundtrip" selected="selected">왕복(서울&lt;-&gt;순천)</option><option value="depart">가는편(서울-&gt;순천)</option><option value="return">오는편(순천-&gt;서울)</option></select></td></tr><tr><td><label>그룹</label></td></tr><tr><td><select class="reg-select" id="group"><option value="">선택</option><option value="groom">신랑</option><option value="bride">신부</option></select></td></tr><tr><td><label class="reg-label" for="name">이름</label></td></tr><tr><td><input class="reg-inp" id="name" placeholder="이름을 입력해주세요."></td></tr><tr><td><label class="reg-label" for="contact">전화번호</label></td></tr><tr><td><input class="reg-num1" id="num" type="tel" maxlength="11" placeholder="ex)01098765757"></td></tr><tr><td><label class="reg-label" for="contact">비밀번호</label></td></tr><tr><td><input class="reg-pwd" id="pwd" type="password" maxlength="4" placeholder="4자리 비밀번호"></td></tr><tr><td class="btn-area"><a class="btn" href="#" onclick="regist();return false;">등록</a></td></tr><tr><td class="btn-area"><a class="btn" href="#" onclick="cancel();return false;">등록 취소</a></td></tr><tr><td class="btn-area"><a class="btn" href="./list">등록 리스트</a></td></tr><tr><td><div style="border:solid 1px #ccc;"><h3>약도</h3><div id="map" style="width:100%;height:400px"></div></div></td></tr></table><script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ab518903c4c4ef40e7d73fd0cdfcaf2&amp;libraries=clusterer,services"></script><script>var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var options = { //지도를 생성할 때 필요한 기본 옵션
+    center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+    level: 3 //지도의 레벨(확대, 축소 정도)
+};
+
+var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+var geocoder = new daum.maps.services.Geocoder();
+geocoder.addressSearch('서울 서초구 방배동 507-1', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+    if (status === daum.maps.services.Status.OK) {
+
+        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new daum.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new daum.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">사당역 공영주차장</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});</script></td></tr></table><script src="main.js"></script></body></html>
