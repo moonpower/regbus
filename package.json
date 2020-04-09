@@ -9,7 +9,7 @@
     "express-session": "^1.15.6",
     "lodash": "^4.17.15",
     "mongodb": "^2.2.12",
-    "mongoose": "^4.7.1",
+    "mongoose": "^5.7.5",
     "nodemailer": "^2.6.4",
     "pug": "^2.0.3",
     "pug-cli": "^1.0.0-alpha6"
